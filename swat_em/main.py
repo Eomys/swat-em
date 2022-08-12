@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import sys
 import os
-from PyQt5 import uic
-from PyQt5.QtWidgets import (
+from qtpy import uic
+from qtpy.QtWidgets import (
     QMainWindow,
     QApplication,
     QFileDialog,
@@ -14,9 +14,9 @@ from PyQt5.QtWidgets import (
     QSplashScreen,
     QGraphicsScene,
 )
-from PyQt5.QtGui import QIntValidator, QDoubleValidator, QIcon, QPixmap, QPainter
-from PyQt5.QtPrintSupport import QPrintDialog, QPrinter
-from PyQt5 import QtCore
+from qtpy.QtGui import QIntValidator, QDoubleValidator, QIcon, QPixmap, QPainter
+from qtpy.QtPrintSupport import QPrintDialog, QPrinter
+from qtpy import QtCore
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
@@ -381,7 +381,7 @@ class MainWindow(QMainWindow):
 
     def update_MMK_phase_slider(self):
         """lineedit for MMK phase changed"""
-        f = get_float(self.MMK_phase_edit.text())
+        f = _get_float(self.MMK_phase_edit.text())
         if f is not None:
             self.MMK_phase_slider.setValue(f)
 
@@ -954,7 +954,7 @@ def main():
         print("eval script file:", args.scriptfile)
     else:
         print("running GUI")
-        app = QApplication(sys.argv)
+        # app = QApplication(sys.argv)
         ex = MainWindow()
 
         if args.loadfile:

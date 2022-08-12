@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from PyQt5 import uic
-from PyQt5.QtWidgets import QDialog, QApplication, QMessageBox, QTableWidgetItem
-from PyQt5.QtGui import QIntValidator
-from PyQt5 import QtGui
-from PyQt5 import QtCore
+from qtpy import uic
+from qtpy.QtWidgets import QDialog, QApplication, QMessageBox, QTableWidgetItem
+from qtpy.QtGui import QIntValidator
+from qtpy import QtGui
+from qtpy import QtCore
 
-#  from PyQt5.QtCore import Qt
+#  from qtpy.QtCore import Qt
 import numpy as np
 import sys
 import os

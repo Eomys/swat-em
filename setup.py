@@ -19,7 +19,7 @@ setuptools.setup(
                               'ui/bitmaps/*', 'doc', 'doc/*',
                               'template/*']},
     platforms="any",
-    install_requires=['numpy', 'PyQt5', 'pyqtgraph', 'xlsxwriter'],
+    install_requires=['numpy', 'QtPy', 'pyqtgraph', 'xlsxwriter'],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

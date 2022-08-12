@@ -1,6 +1,6 @@
-from PyQt5 import uic
-from PyQt5 import QtGui
-from PyQt5.QtWidgets import QTreeWidgetItem, QDialog, QFileDialog
+from qtpy import uic
+from qtpy import QtGui
+from qtpy.QtWidgets import QTreeWidgetItem, QDialog, QFileDialog
 from swat_em import datamodel, project
 import os
 import sys

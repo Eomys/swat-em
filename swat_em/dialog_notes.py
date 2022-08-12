@@ -1,5 +1,5 @@
-from PyQt5 import uic, QtGui
-from PyQt5.QtWidgets import QDialog
+from qtpy import uic, QtGui
+from qtpy.QtWidgets import QDialog
 import os
 import sys
 

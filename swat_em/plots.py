@@ -3,9 +3,9 @@
 Provides functions for plotting
 """
 
-from PyQt5.QtWidgets import QTableWidgetItem, QApplication
-from PyQt5.QtGui import QFont, QSyntaxHighlighter, QTextCursor, QTextCharFormat, QColor
-from PyQt5 import QtCore
+from qtpy.QtWidgets import QTableWidgetItem, QApplication
+from qtpy.QtGui import QFont, QSyntaxHighlighter, QTextCursor, QTextCharFormat, QColor
+from qtpy import QtCore
 
 
 from swat_em.config import get_phase_color, get_line_color, config
@@ -17,10 +17,10 @@ import os
 import re
 
 # WORKAROUND for pyqtgraph's printing system
-#  from PyQt5.QtPrintSupport import QPrinter, QPrintDialog
-#  import PyQt5.QtGui
-#  PyQt5.QtGui.QPrinter = QPrinter
-#  PyQt5.QtGui.QPrintDialog = QPrintDialog
+#  from qtpy.QtPrintSupport import QPrinter, QPrintDialog
+#  import qtpy.QtGui
+#  qtpy.QtGui.QPrinter = QPrinter
+#  qtpy.QtGui.QPrintDialog = QPrintDialog
 
 import pyqtgraph as pg
 import pyqtgraph.exporters
@@ -341,7 +341,7 @@ class _slot_plot:
 
                 pen = pg.mkPen(magnet_colors[kpole], width=magnet_linewidth)
 
-                # Bug in pyqtgraph / PyQt5 > v5.12.1
+                # Bug in pyqtgraph / qtpy > v5.12.1
                 #  curve = pg.PlotCurveItem(x1, y1, pen=pen, connect="finite")
                 #  self.fig.addItem(curve)
                 for xtmp, ytmp in zip(*group_on_nan(x1, y1)):
@@ -467,7 +467,7 @@ class _polar_layout_plot:
                 y += [y1, y2, np.nan]
             pen = pg.mkPen(get_phase_color(km), width=1.5)
 
-            # Bug in pyqtgraph / PyQt5 > v5.12.1
+            # Bug in pyqtgraph / qtpy > v5.12.1
             #  curve = pg.PlotCurveItem(
             #  x, y, pen=pen, name="Phase " + str(km + 1), connect="finite"
             #  )
@@ -578,7 +578,7 @@ class _overhang_plot:
         brush = pg.mkBrush(color="#BFBFBF")
         x, y_upper, y_lower = gen_slot_filling(Q, bz=self.bz, hz=self.hz)
 
-        # Bug in pyqtgraph / PyQt5 > v5.12.1
+        # Bug in pyqtgraph / qtpy > v5.12.1
         #  c1 = pg.PlotCurveItem(x, y_upper, connect="finite")
         #  c2 = pg.PlotCurveItem(x, y_lower, connect="finite")
         #  fill = pg.FillBetweenItem(c1, c2, brush=brush)
@@ -655,7 +655,7 @@ class _overhang_plot:
 
             pen = pg.mkPen(color=get_phase_color(i - 1), width=config["plt"]["lw"])
 
-            # Bug in pyqtgraph / PyQt5 > v5.12.1
+            # Bug in pyqtgraph / qtpy > v5.12.1
             #  curve = pg.PlotCurveItem(
             #  x, y, pen=pen, connect="finite", name="Phase " + str(i)
             #  )

@@ -1,7 +1,7 @@
-from PyQt5 import uic
-from PyQt5 import QtGui
-from PyQt5.QtWidgets import QDialog, QTableWidgetItem, QMessageBox
-from PyQt5.QtGui import QDoubleValidator
+from qtpy import uic
+from qtpy import QtGui
+from qtpy.QtWidgets import QDialog, QTableWidgetItem, QMessageBox
+from qtpy.QtGui import QDoubleValidator
 import numpy as np
 from swat_em.config import get_phase_color, config
 from swat_em.analyse import _get_float

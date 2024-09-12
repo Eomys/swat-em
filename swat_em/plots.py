@@ -6,6 +6,7 @@ Provides functions for plotting
 from qtpy.QtWidgets import QTableWidgetItem, QApplication
 from qtpy.QtGui import QFont, QSyntaxHighlighter, QTextCursor, QTextCharFormat, QColor
 from qtpy import QtCore
+import string
 
 
 from swat_em.config import get_phase_color, get_line_color, config
@@ -30,6 +31,9 @@ pg.setConfigOption("foreground", "k")
 pg.setConfigOptions(antialias=True)
 
 
+Alpha = string.ascii_uppercase
+
+
 def gen_coil_lines(w, h1=0.75, h2=1.5, db1=0.1, Np1=21):
     """
     Create lines of a coil for plotting.
@@ -50,7 +54,7 @@ def gen_coil_lines(w, h1=0.75, h2=1.5, db1=0.1, Np1=21):
 
     Returns
     -------
-    x : list 
+    x : list
         x values of the coil for plotting
     y : list
         y values of the coil for plotting
@@ -92,7 +96,7 @@ def gen_slot_lines(Q, bz, hz):
 
     Returns
     -------
-    x : list 
+    x : list
         x values of the slots for plotting
     y : list
         y values of the slots for plotting
@@ -134,7 +138,7 @@ def gen_slot_filling(Q, bz, hz):
 
     Returns
     -------
-    x : list 
+    x : list
         x values of the slots for plotting
     y : list
         y values (upper lines) of the slots for plotting
@@ -475,7 +479,7 @@ class _polar_layout_plot:
 
             i_name = 0
             for xtmp, ytmp in zip(*group_on_nan(x, y)):
-                name = "Phase " + str(km + 1) if i_name == 0 else None
+                name = "Phase " + Alpha[km] if i_name == 0 else None
                 curve = pg.PlotCurveItem(
                     xtmp, ytmp, pen=pen, name=name, connect="finite"
                 )
@@ -663,7 +667,7 @@ class _overhang_plot:
 
             i_name = 0
             for xtmp, ytmp in zip(*group_on_nan(x, y)):
-                name = "Phase " + str(i) if i_name == 0 else None
+                name = "Phase " + Alpha[i - 1] if i_name == 0 else None
                 curve = pg.PlotCurveItem(
                     xtmp, ytmp, pen=pen, connect="finite", name=name
                 )
@@ -675,7 +679,7 @@ class _overhang_plot:
         # plot slot number
         for k in range(Q):
             text = pg.TextItem(anchor=(0.5, 0.5))
-            text.setPlainText(str(k + 1))
+            text.setPlainText(str(k))
             text.setPos(k, -self.h1 / 2)
             text.setColor("k")
             self.fig.addItem(
